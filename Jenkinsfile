@@ -47,9 +47,7 @@ pipeline {
 
   post {
     always {
-      // Cleanup disabled on purpose so API stays up
-      // sh 'docker stop simple-api || true'
-      // sh 'docker rm simple-api || true'
+      echo 'Post stage intentionally left blank. No cleanup.'
     }
   }
 }
