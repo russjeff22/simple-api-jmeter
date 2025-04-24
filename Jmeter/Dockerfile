@@ -4,4 +4,4 @@ FROM justb4/jmeter:5.5
 COPY simple-api-test.jmx /test/simple-api-test.jmx
 
 # Run JMeter in non-GUI mode
-CMD ["-n", "-t", "/test/simple-api-test.jmx", "-l", "/test/results.jtl"]
+CMD ["jmeter", "-n", "-t", "/test/simple-api-test.jmx", "-l", "/test/results.jtl"]
