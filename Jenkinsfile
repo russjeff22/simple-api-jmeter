@@ -28,7 +28,10 @@ pipeline {
 
     stage('Run API Container') {
       steps {
-        sh 'docker run -d --name simple-api --restart unless-stopped -p 8000:8000 simple-api:latest'
+        script {
+          sh 'docker rm -f simple-api || true'
+          sh 'docker run -d --name simple-api --restart unless-stopped -p 8000:8000 simple-api:latest'
+        }
       }
     }
 
@@ -44,8 +47,9 @@ pipeline {
 
   post {
     always {
-     // sh 'docker stop simple-api || true'
-     // sh 'docker rm simple-api || true'
+      // Cleanup disabled on purpose so API stays up
+      // sh 'docker stop simple-api || true'
+      // sh 'docker rm simple-api || true'
     }
   }
 }
